@@ -1,5 +1,5 @@
 const path = require('path');
-const uglify = require('uglifyjs-webpack-plugin');
+const uglify = require('uglifyjs-webpack-plugin'); // js压缩
 const htmlPlugin = require('html-webpack-plugin');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -28,7 +28,18 @@ module.exports = {
                 test: /\.css$/,
                 use: extractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: "css-loader"
+                    use: [
+                        {
+                            loader: "css-loader",
+                            options: {
+                                importLoaders: 1
+                            }
+                        },
+                        {
+                            loader: "postcss-loader"
+                        }
+
+                    ]
                 })
             },
             {
