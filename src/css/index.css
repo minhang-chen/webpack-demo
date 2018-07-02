@@ -1,0 +1,8 @@
+#title{
+    color: red;
+}
+.img-box{
+    background: url(../images/pig.jpg) 100%;
+    width: 300px;
+    height: 300px;
+}
